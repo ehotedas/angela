@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20%;
+            position: relative;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function mostrarMensagem() {
+            document.body.innerHTML = '<h1>Você é gay kkkkkkkkkkkkk</h1>';
+        }
+
+        function correrDoMouse(event) {
+            const button = document.getElementById('naoButton');
+            const buttonRect = button.getBoundingClientRect();
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // Verifica a distância entre o mouse e o botão
+            const distanciaX = Math.abs(mouseX - buttonRect.left);
+            const distanciaY = Math.abs(mouseY - buttonRect.top);
+
+            // Se a distância for menor que 100px, o botão vai fugir
+            if (distanciaX < 100 && distanciaY < 100) {
+                // Gera uma nova posição aleatória dentro da tela
+                const randomX = Math.random() * (window.innerWidth - buttonRect.width);
+                const randomY = Math.random() * (window.innerHeight - buttonRect.height);
+
+                button.style.position = 'absolute';
+                button.style.left = randomX + 'px';
+                button.style.top = randomY + 'px';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Você é gay?</h1>
+    <button onclick="mostrarMensagem()">Sim</button>
+    <button id="naoButton" onmousemove="correrDoMouse(event)">Não</button>
+</body>
+</html>
