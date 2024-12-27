@@ -14,48 +14,53 @@ class Paper {
   rotating = false;
 
   init(paper) {
-    const moveEvent = (e) => {
-      const isTouch = e.type.startsWith("touch");
-      const clientX = isTouch ? e.touches[0].clientX : e.clientX;
-      const clientY = isTouch ? e.touches[0].clientY : e.clientY;
+    const getClientCoords = (e) => {
+      if (e.type.startsWith("touch")) {
+        return { x: e.touches[0]?.clientX || 0, y: e.touches[0]?.clientY || 0 };
+      } else {
+        return { x: e.clientX, y: e.clientY };
+      }
+    };
 
+    const moveEvent = (e) => {
       if (!this.holdingPaper) return;
 
+      e.preventDefault();
+      const { x, y } = getClientCoords(e);
+
       if (!this.rotating) {
-        this.velX = clientX - this.prevMouseX;
-        this.velY = clientY - this.prevMouseY;
+        this.velX = x - this.prevMouseX;
+        this.velY = y - this.prevMouseY;
         this.currentPaperX += this.velX;
         this.currentPaperY += this.velY;
       } else {
-        const dirX = clientX - this.mouseTouchX;
-        const dirY = clientY - this.mouseTouchY;
+        const dirX = x - this.mouseTouchX;
+        const dirY = y - this.mouseTouchY;
         const angle = Math.atan2(dirY, dirX);
         this.rotation = (180 * angle) / Math.PI;
       }
 
-      this.prevMouseX = clientX;
-      this.prevMouseY = clientY;
+      this.prevMouseX = x;
+      this.prevMouseY = y;
 
       paper.style.transform = `translate(${this.currentPaperX}px, ${this.currentPaperY}px) rotate(${this.rotation}deg)`;
     };
 
     const startEvent = (e) => {
-      const isTouch = e.type.startsWith("touch");
-      const clientX = isTouch ? e.touches[0].clientX : e.clientX;
-      const clientY = isTouch ? e.touches[0].clientY : e.clientY;
-
       e.preventDefault();
 
+      const { x, y } = getClientCoords(e);
+
       if (this.holdingPaper) return;
+
       this.holdingPaper = true;
-
       paper.style.zIndex = highestZ++;
-      this.mouseTouchX = clientX;
-      this.mouseTouchY = clientY;
-      this.prevMouseX = clientX;
-      this.prevMouseY = clientY;
+      this.mouseTouchX = x;
+      this.mouseTouchY = y;
+      this.prevMouseX = x;
+      this.prevMouseY = y;
 
-      if (isTouch && e.touches.length === 2) {
+      if (e.type.startsWith("touch") && e.touches.length === 2) {
         this.rotating = true;
       }
     };
