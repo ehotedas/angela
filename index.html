@@ -1,65 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ot" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pergunta</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 20%;
-            position: relative;
-            height: 100vh;
-        }
-        h1 {
-            color: #333;
-        }
-        button {
-            font-size: 18px;
-            padding: 10px 20px;
-            margin: 10px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-    <script>
-        function mostrarMensagem() {
-            document.body.innerHTML = '<h1>Você é gay kkkkkkkkkkkkk</h1>';
-        }
-
-        function correrDoMouse(event) {
-            const button = document.getElementById('naoButton');
-            const buttonRect = button.getBoundingClientRect();
-            const mouseX = event.clientX;
-            const mouseY = event.clientY;
-
-            // Verifica a distância entre o mouse e o botão
-            const distanciaX = Math.abs(mouseX - buttonRect.left);
-            const distanciaY = Math.abs(mouseY - buttonRect.top);
-
-            // Se a distância for menor que 100px, o botão vai fugir
-            if (distanciaX < 100 && distanciaY < 100) {
-                // Gera uma nova posição aleatória dentro da tela
-                const randomX = Math.random() * (window.innerWidth - buttonRect.width);
-                const randomY = Math.random() * (window.innerHeight - buttonRect.height);
-
-                button.style.position = 'absolute';
-                button.style.left = randomX + 'px';
-                button.style.top = randomY + 'px';
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <title>Angela ❤️</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Short+Stack&amp;family=Homemade+Apple&amp;display=swap'>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Você é gay?</h1>
-    <button onclick="mostrarMensagem()">Sim</button>
-    <button id="naoButton" onmousemove="correrDoMouse(event)">Não</button>
+
+<div class="paper heart">
+</div>
+<div class="paper image">
+  <p> E dedico todo o meu amor</p>
+    <p>Para você! ❤️</p>
+</div>
+<div class="paper image">
+  <p</p>
+  <img src="1.jpg" />
+</div>
+<div class="paper image">
+    <p</p>
+    <img src="2.jpg" />
+  </div>
+<div class="paper image">
+    <p</p>
+    <img src="3.jpg" />
+  </div>
+<div class="paper image">
+  <p>Como pode você ser tão</p>
+   <p> fantastica? ❤️ </p>
+  
+</div>
+<div class="paper red">
+<p class="p1">E a minha garota</p>
+<p class="p2">Para todo sempre nesse mundo!</p>
+</div>
+<div class="paper">
+<p class="p1">Você é tão </p>
+  <p class="p1">Incrível! <span style="color: red !important;">❤️</span></p>
+</div>
+<div class="paper">
+<p class="p1">Mexa os papeis!</p>
+</div>
+<!-- javascript file -->
+  <script  src="script.js"></script>
 </body>
 </html>
