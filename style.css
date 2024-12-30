@@ -1,67 +1,107 @@
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+
 body {
-  height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-size: 1000px;
+  min-height: 100vh;
+  background-size: cover;
   background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
-  background-position: center center;
+  background-position: center;
+  font-family: 'Zeyada', cursive;
 }
+
 .paper {
   background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
-  background-size: 500px;
-  background-position: center center;
-  padding: 20px 100px;
-  transform: rotateZ(-5deg);
-  box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
-  position: absolute;
-}
-.paper.heart {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  padding: 0;
-  border-radius: 50%;
-}
-.paper.image {
+  background-size: cover;
+  background-position: center;
   padding: 10px;
+  margin: 10px;
+  box-shadow: 1px 15px 20px 0px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transform: rotateZ(-5deg);
+  transition: transform 0.2s ease;
+  max-width: 90%;
+  width: 300px; /* Largura padrão */
 }
-.paper.image p {
-  font-size: 30px;
-}
-img {
-  max-height: 200px;
-  width: 100%;
-  user-select: none;
-}
-.paper.heart::after {
-  content: "";
-  background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-size: 150px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 0.6;
-}
-.paper.red {
 
+.paper.heart {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  padding: 0;
 }
-.paper:nth-of-type(3n) {
-  background-position: left top;
-}
-.paper:nth-of-type(3n) {
 
+.paper.image img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
 }
-p {
-  font-family: 'Zeyada';
-  font-size: 50px;
-  color: rgb(0,0,100);
+
+.paper p {
+  font-size: 1.2em;
+  color: rgb(0, 0, 100);
   opacity: 0.75;
+  text-align: center;
+  margin: 0.5em 0;
   user-select: none;
-  
+}
+
+.paper.red {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+img {
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .paper {
+    width: 80%;
+    padding: 15px;
+    font-size: 0.9em;
+  }
+
+  .paper.heart {
+    width: 120px;
+    height: 120px;
+  }
+
+  .paper.image img {
+    max-width: 150px;
+  }
+
+  p {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .paper {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .paper.heart {
+    width: 100px;
+    height: 100px;
+  }
+
+  .paper.image img {
+    max-width: 120px;
+  }
+
+  p {
+    font-size: 0.8em;
+  }
 }
