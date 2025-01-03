@@ -1,48 +1,86 @@
 <!DOCTYPE html>
-<html lang="ot" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Angela ❤️</title>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Short+Stack&amp;family=Homemade+Apple&amp;display=swap'>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo</title>
+
+    <style>
+        body{
+            background-color: red;
+        }
+
+        .painel{
+            margin: auto;
+            background-color: white;
+            width: 500px;
+            height: 500px;
+            border-radius: 20px;
+            text-align: center;
+            padding-top: 50px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        #sim{
+            height: 40px;
+            width: 60px;
+            background-color: red;
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+            margin-left: -50px;
+        }
+        #nao{
+            position: absolute;
+            height: 40px;
+            width: 60px;
+            background-color: red;
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+            margin-left: 10px;
+        }
+
+    </style>
+
 </head>
 <body>
 
-<div class="paper heart">
-</div>
-<div class="paper image">
-  <p> E dedico todo o meu amor</p>
-    <p>Para você! ❤️</p>
-</div>
-<div class="paper image">
-  <p</p>
-  <img src="1.jpg" />
-</div>
-<div class="paper image">
-    <p</p>
-    <img src="2.jpg" />
-  </div>
-<div class="paper image">
-    <p</p>
-    <img src="3.jpg" />
-  </div>
-<div class="paper image">
-  <p>Como pode você ser tão</p>
-   <p> fantastica? ❤️ </p>
-  
-</div>
-<div class="paper red">
-<p class="p1">E a minha garota</p>
-<p class="p2">Para todo sempre nesse mundo!</p>
-</div>
-<div class="paper">
-<p class="p1">Você é tão </p>
-  <p class="p1">Incrível! <span style="color: red !important;">❤️</span></p>
-</div>
-<div class="paper">
-<p class="p1">Mexa os papeis!</p>
-</div>
-<!-- javascript file -->
-  <script  src="script.js"></script>
+    <div class="painel">
+        <h1> Te amo </h1>
+
+        <img src="https://gifman.net/wp-content/uploads/2019/06/ursinho-fofo-apaixonado.gif" alt="">
+
+        <h2>Aceita ser minha namorada novamente? </h2>
+        
+
+        <a href="https://www.youtube.com/shorts/h9Z4UfpZn5A"><button id="sim" > Sim! </button></a>
+        <button onmouseover="fuja()" id="nao"> Não! </button>
+        
+    </div>
+
+    <script>
+        function fuja(){
+            var botaoNao = document.getElementById("nao")
+
+            var larguraJanela = window.innerWidth;
+            var alturaJanela = window.innerHeight;
+
+            var maxX = larguraJanela - botaoNao.offsetWidth;
+            var maxY = alturaJanela - botaoNao.offsetHeight;
+
+            var aleatorioX = Math.floor(Math.random() * maxX);
+            var aleatorioY = Math.floor(Math.random() * maxY);
+
+            botaoNao.style.left = aleatorioX + "px";
+            botaoNao.style.top = aleatorioY + "px";
+
+
+        }
+    </script>
+
+
+
+    
 </body>
 </html>
