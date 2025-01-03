@@ -7,61 +7,104 @@
     <title>Te Amo</title>
 
     <style>
-        body{
+        body {
             background-color: red;
-        }
-
-        .painel{
-            margin: auto;
-            background-color: white;
-            width: 500px;
-            height: 500px;
-            border-radius: 20px;
-            text-align: center;
-            padding-top: 50px;
+            margin: 0;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
-        #sim{
+
+        .painel {
+            margin: auto;
+            background-color: white;
+            max-width: 90%;
+            width: 400px;
+            height: auto;
+            border-radius: 20px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .painel img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        h1, h2 {
+            margin: 10px 0;
+        }
+
+        #sim, #nao {
             height: 40px;
-            width: 60px;
+            width: 80px;
             background-color: red;
             border: 2px solid white;
             border-radius: 10px;
             color: white;
-            margin-left: -50px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
         }
-        #nao{
+
+        #nao {
             position: absolute;
-            height: 40px;
-            width: 60px;
-            background-color: red;
-            border: 2px solid white;
-            border-radius: 10px;
-            color: white;
-            margin-left: 10px;
         }
 
-    </style>
+        /* Estilos para dispositivos com largura máxima de 768px (tablets e celulares grandes) */
+        @media (max-width: 768px) {
+            .painel {
+                width: 95%;
+                padding: 15px;
+            }
 
+            #sim, #nao {
+                width: 70px;
+                height: 35px;
+                font-size: 14px;
+            }
+        }
+
+        /* Estilos para dispositivos com largura máxima de 480px (iPhone e Android menores) */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            #sim, #nao {
+                width: 60px;
+                height: 30px;
+                font-size: 12px;
+            }
+
+            .painel {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <div class="painel">
-        <h1> Te amo </h1>
+        <h1>Te amo</h1>
 
-        <img src="https://gifman.net/wp-content/uploads/2019/06/ursinho-fofo-apaixonado.gif" alt="">
+        <img src="https://gifman.net/wp-content/uploads/2019/06/ursinho-fofo-apaixonado.gif" alt="Ursinho apaixonado">
 
-        <h2>Aceita ser minha namorada novamente? </h2>
-        
+        <h2>Aceita ser minha namorada novamente?</h2>
 
-        <a href="https://www.youtube.com/shorts/h9Z4UfpZn5A"><button id="sim" > Sim! </button></a>
-        <button onmouseover="fuja()" id="nao"> Não! </button>
-        
+        <a href="https://www.youtube.com/shorts/h9Z4UfpZn5A">
+            <button id="sim">Sim!</button>
+        </a>
+        <button onmouseover="fuja()" id="nao">Não!</button>
     </div>
 
     <script>
-        function fuja(){
-            var botaoNao = document.getElementById("nao")
+        function fuja() {
+            var botaoNao = document.getElementById("nao");
 
             var larguraJanela = window.innerWidth;
             var alturaJanela = window.innerHeight;
@@ -74,13 +117,8 @@
 
             botaoNao.style.left = aleatorioX + "px";
             botaoNao.style.top = aleatorioY + "px";
-
-
         }
     </script>
 
-
-
-    
 </body>
 </html>
