@@ -51,7 +51,11 @@
             position: absolute;
         }
 
-        /* Estilos para dispositivos com largura máxima de 768px (tablets e celulares grandes) */
+        .gif-container {
+            margin-top: 20px;
+        }
+
+        /* Estilos para dispositivos com largura máxima de 768px */
         @media (max-width: 768px) {
             .painel {
                 width: 95%;
@@ -65,7 +69,7 @@
             }
         }
 
-        /* Estilos para dispositivos com largura máxima de 480px (iPhone e Android menores) */
+        /* Estilos para dispositivos com largura máxima de 480px */
         @media (max-width: 480px) {
             h1 {
                 font-size: 22px;
@@ -96,10 +100,11 @@
 
         <h2>Aceita ser minha namorada novamente?</h2>
 
-        <a href="https://www.youtube.com/shorts/h9Z4UfpZn5A">
-            <button id="sim">Sim!</button>
-        </a>
+        <button id="sim" onclick="mostrarGif()">Sim!</button>
         <button onmouseover="fuja()" id="nao">Não!</button>
+
+        <!-- Container para exibir o gif -->
+        <div id="gif-container" class="gif-container"></div>
     </div>
 
     <script>
@@ -117,6 +122,15 @@
 
             botaoNao.style.left = aleatorioX + "px";
             botaoNao.style.top = aleatorioY + "px";
+        }
+
+        function mostrarGif() {
+            var gifContainer = document.getElementById("gif-container");
+
+            // Limpa o conteúdo do painel e adiciona o gif
+            gifContainer.innerHTML = `
+                <img src="https://media.tenor.com/4yEuW6bbRo0AAAAi/gato.gif" alt="Gif de gato apaixonado" style="max-width: 100%; border-radius: 10px;">
+            `;
         }
     </script>
 
