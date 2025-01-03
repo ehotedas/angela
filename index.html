@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Te Amo</title>
 
     <style>
         body {
-            background-color: red;
+            background-color: #fbe8e7; /* Fundo mais agradável */
             margin: 0;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            overflow: hidden;
         }
 
         .painel {
@@ -18,16 +19,16 @@
             background-color: white;
             max-width: 90%;
             width: 400px;
-            height: auto;
+            height: 400px;
             border-radius: 20px;
             text-align: center;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
-        .painel img {
+        #gif-container img {
             max-width: 100%;
-            height: auto;
             border-radius: 10px;
         }
 
@@ -38,8 +39,8 @@
         #sim, #nao {
             height: 40px;
             width: 80px;
-            background-color: red;
-            border: 2px solid white;
+            background-color: #ff6f61; /* Cor do botão ajustada */
+            border: none;
             border-radius: 10px;
             color: white;
             font-size: 16px;
@@ -51,14 +52,36 @@
             position: absolute;
         }
 
-        .gif-container {
-            margin-top: 20px;
+        #eba {
+            display: none;
+            font-size: 24px;
+            color: #ff6f61;
+            font-weight: bold;
+            margin-top: 10px;
         }
 
-        /* Estilos para dispositivos com largura máxima de 768px */
+        .heart {
+            position: absolute;
+            color: #ff6f61; /* Corações combinando com o botão */
+            font-size: 20px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         @media (max-width: 768px) {
             .painel {
                 width: 95%;
+                height: auto;
                 padding: 15px;
             }
 
@@ -69,7 +92,6 @@
             }
         }
 
-        /* Estilos para dispositivos com largura máxima de 480px */
         @media (max-width: 480px) {
             h1 {
                 font-size: 22px;
@@ -93,18 +115,21 @@
 </head>
 <body>
 
-    <div class="painel">
-        <h1>Te amo</h1>
+    <div class="painel" id="painel">
+        <h1 id="titulo">Te amo</h1>
 
-        <img src="https://gifman.net/wp-content/uploads/2019/06/ursinho-fofo-apaixonado.gif" alt="Ursinho apaixonado">
+        <img src="https://gifman.net/wp-content/uploads/2019/06/ursinho-fofo-apaixonado.gif" alt="Ursinho apaixonado" id="imagem">
 
-        <h2>Aceita ser minha namorada novamente?</h2>
+        <h2 id="pergunta">Aceita ser minha namorada novamente?</h2>
 
         <button id="sim" onclick="mostrarGif()">Sim!</button>
         <button onmouseover="fuja()" id="nao">Não!</button>
 
         <!-- Container para exibir o gif -->
-        <div id="gif-container" class="gif-container"></div>
+        <div id="gif-container"></div>
+
+        <!-- Texto "Ebaaaaaa!" -->
+        <div id="eba">Ebaaaaaa!</div>
     </div>
 
     <script>
@@ -125,12 +150,44 @@
         }
 
         function mostrarGif() {
-            var gifContainer = document.getElementById("gif-container");
+            // Remove textos e botões
+            document.getElementById("titulo").style.display = "none";
+            document.getElementById("imagem").style.display = "none";
+            document.getElementById("pergunta").style.display = "none";
+            document.getElementById("sim").style.display = "none";
+            document.getElementById("nao").style.display = "none";
 
-            // Limpa o conteúdo do painel e adiciona o gif
+            // Exibe o texto "Ebaaaaaa!"
+            var ebaText = document.getElementById("eba");
+            ebaText.style.display = "block";
+
+            // Adiciona o gif no centro
+            var gifContainer = document.getElementById("gif-container");
             gifContainer.innerHTML = `
-                <img src="https://media.tenor.com/4yEuW6bbRo0AAAAi/gato.gif" alt="Gif de gato apaixonado" style="max-width: 100%; border-radius: 10px;">
+                <img src="https://media.tenor.com/4yEuW6bbRo0AAAAi/gato.gif" alt="Gif de gato apaixonado">
             `;
+
+            // Inicia a chuva de corações
+            setInterval(criarCoracao, 150); // Aumenta a frequência
+        }
+
+        function criarCoracao() {
+            var coracao = document.createElement("div");
+            coracao.className = "heart";
+            coracao.innerHTML = "❤️";
+
+            var tamanho = Math.random() * 20 + 10; // Tamanhos variados
+            coracao.style.fontSize = `${tamanho}px`;
+
+            coracao.style.left = `${Math.random() * 100}vw`; // Largura aleatória
+            coracao.style.animationDuration = `${Math.random() * 2 + 3}s`; // Duração variada
+
+            document.body.appendChild(coracao);
+
+            // Remove o coração após a animação
+            setTimeout(() => {
+                coracao.remove();
+            }, 5000);
         }
     </script>
 
